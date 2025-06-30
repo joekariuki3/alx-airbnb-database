@@ -2,7 +2,7 @@
 -- (INNER JOIN selects only records that have matching values in both tables)
 SELECT * FROM booking
 INNER JOIN user
-ON booking.user_id = user.id;
+ON booking.user_id = user.user_id;
 
 -- all properties and their reviews, including properties that have no reviews.
 -- (LEFT JOIN selects all records from left table(table 1), and matching records from right table(table 2) if nothing matches in right table returns 0/NULL)
