@@ -13,6 +13,7 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
       _Note: MySQL does not support `FULL OUTER JOIN` natively; use `LEFT JOIN`/`RIGHT JOIN` with `UNION` for equivalent results._
 
 - **`subqueries.sql`:**
+
   - Demonstrates the use of subqueries (both non-correlated and correlated).
     - **Non-correlated subquery:**
       - Lists all properties where the average rating is greater than 4.0.
@@ -20,6 +21,14 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
     - **Correlated subquery:**
       - Lists users who have made more than 3 bookings.
       - The subquery counts bookings per user and is evaluated for each user row.
+
+- **`aggregations_and_window_functions.sql`:**
+  - Demonstrates aggregation and window functions.
+    - **Aggregations:**
+      - Retrieves the total number of bookings made by each user, including users with no bookings.
+      - Retrieves the total number of bookings for each property, including properties with no bookings.
+    - **Window Functions:**
+      - Ranks properties based on the total number of bookings using the `ROW_NUMBER()` window function.
 
 ## Usage
 
@@ -29,6 +38,7 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
 ```sh
 mysql -u <user> -p <database> < joins_queries.sql
 mysql -u <user> -p <database> < subqueries.sql
+mysql -u <user> -p <database> < aggregations_and_window_functions.sql
 ```
 
 Or copy and execute individual queries interactively.
