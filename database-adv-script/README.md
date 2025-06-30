@@ -28,7 +28,7 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
       - Retrieves the total number of bookings made by each user, including users with no bookings.
       - Retrieves the total number of bookings for each property, including properties with no bookings.
     - **Window Functions:**
-      - Ranks properties based on the total number of bookings using the `ROW_NUMBER()` window function.
+      - Uses `ROW_NUMBER()` and `RANK()` to assign row numbers and ranks to properties based on the total number of bookings, allowing easy identification of the most booked properties.
 
 ## Usage
 
