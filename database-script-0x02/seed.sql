@@ -1,5 +1,3 @@
-BEGIN TRANSACTION;
-
 -- roles
 INSERT INTO role (role_id, role_name) VALUES
   ('r1', 'guest'),
@@ -52,5 +50,3 @@ INSERT INTO review (review_id, property_id, user_id, rating, comment, created_at
 INSERT INTO message (message_id, sender_id, recipient_id, message_body, sent_at) VALUES
   ('m1', 'u2', 'u1', 'Hi Alice, is the Nairobi apartment available next week?', CURRENT_TIMESTAMP),
     ('m2', 'u1', 'u2', 'Yes Bob, it is available from July 1st to 3rd.', CURRENT_TIMESTAMP);
-
-  COMMIT;
