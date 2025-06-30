@@ -1,19 +1,25 @@
-# Join Queries Script
+# Advanced Query Scripts
 
-The `joins_queries.sql` file demonstrates how to use different SQL JOIN operations to retrieve related data from the Airbnb Clone database.
+This directory contains SQL scripts demonstrating advanced query techniques on the Airbnb Clone database.
 
 ## Contents
 
-- **`INNER JOIN` (Bookings and Users):**
-  - Retrieves all bookings along with the users who made those bookings.
-  - Only includes records where a booking has a matching user.
-- **`LEFT JOIN` (Properties and Reviews):**
-  - Retrieves all properties and their reviews.
-  - Includes properties even if they have no reviews (review fields will be `NULL`).
-- **`FULL OUTER JOIN` (Users and Bookings):**
-  - Retrieves all users and all bookings, including users without bookings and bookings not linked to a user.
-  - Fields from missing matches are filled with `NULL`s.
-  - **Note**: MySQL does not support `FULL OUTER JOIN` natively, you may need to use a combination of `LEFT` and `RIGHT JOIN` with `UNION` for equivalent results.
+- **`joins_queries.sql`:**
+
+  - Demonstrates different SQL JOIN operations to retrieve related data.
+    - **`INNER JOIN` (Bookings and Users):** Retrieves all bookings with their users (only matching records).
+    - **`LEFT JOIN` (Properties and Reviews):** Retrieves all properties and their reviews, including properties with no reviews.
+    - **`FULL OUTER JOIN` (Users and Bookings):** Retrieves all users and all bookings, including unmatched records.
+      _Note: MySQL does not support `FULL OUTER JOIN` natively; use `LEFT JOIN`/`RIGHT JOIN` with `UNION` for equivalent results._
+
+- **`subqueries.sql`:**
+  - Demonstrates the use of subqueries (both non-correlated and correlated).
+    - **Non-correlated subquery:**
+      - Lists all properties where the average rating is greater than 4.0.
+      - The subquery calculates average ratings per property, the outer query filters based on this result.
+    - **Correlated subquery:**
+      - Lists users who have made more than 3 bookings.
+      - The subquery counts bookings per user and is evaluated for each user row.
 
 ## Usage
 
@@ -22,6 +28,7 @@ The `joins_queries.sql` file demonstrates how to use different SQL JOIN operatio
 
 ```sh
 mysql -u <user> -p <database> < joins_queries.sql
+mysql -u <user> -p <database> < subqueries.sql
 ```
 
 Or copy and execute individual queries interactively.
@@ -29,4 +36,4 @@ Or copy and execute individual queries interactively.
 ## Notes
 
 - These queries are for demonstration and learning purposes.
-- See comments in the SQL file for explanations of each JOIN type.
+- See comments in each SQL file for explanations of the query logic.
