@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS property(
 );
 
 -- index of host_id on property table
-CREATE INDEX IF NOT EXISTS idx_property_host_id ON property(host_id);
+CREATE INDEX idx_property_host_id ON property(host_id);
 
 -- index of location_id on property table
-CREATE INDEX IF NOT EXISTS idx_property_location_id ON property(location_id);
+CREATE INDEX idx_property_location_id ON property(location_id);
 
 -- booking table
 CREATE TABLE IF NOT EXISTS booking(
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS booking(
 );
 
 -- index of property_id on booking table
-CREATE INDEX IF NOT EXISTS idx_booking_property_id ON booking(property_id);
+CREATE INDEX idx_booking_property_id ON booking(property_id);
 
 -- index of user_id on booking table
-CREATE INDEX IF NOT EXISTS idx_booking_user_id ON booking(user_id);
+CREATE INDEX idx_booking_user_id ON booking(user_id);
 
 -- payment method table
 CREATE TABLE IF NOT EXISTS payment_method(
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS payment(
 );
 
 -- index of booking_id on payment table
-CREATE INDEX IF NOT EXISTS idx_payment_booking_id ON payment(booking_id);
+CREATE INDEX idx_payment_booking_id ON payment(booking_id);
 
 -- review table
 CREATE TABLE IF NOT EXISTS review(
@@ -98,10 +98,10 @@ CREATE TABLE IF NOT EXISTS review(
 );
 
 -- index of property_id on review table
-CREATE INDEX IF NOT EXISTS idx_review_property_id ON review(property_id);
+CREATE INDEX idx_review_property_id ON review(property_id);
 
 -- index of user_id on review table
-CREATE INDEX IF NOT EXISTS idx_review_user_id ON review(user_id);
+CREATE INDEX idx_review_user_id ON review(user_id);
 
 -- message table
 CREATE TABLE IF NOT EXISTS message(
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS message(
 );
 
 -- index of sender_id on message table
-CREATE INDEX IF NOT EXISTS idx_message_sender_id ON message(sender_id);
+CREATE INDEX idx_message_sender_id ON message(sender_id);
 
 -- index of recipient_id on message table
-CREATE INDEX IF NOT EXISTS idx_message_recipient_id ON message(recipient_id);
+CREATE INDEX idx_message_recipient_id ON message(recipient_id);
