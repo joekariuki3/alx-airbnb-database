@@ -23,12 +23,33 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
       - The subquery counts bookings per user and is evaluated for each user row.
 
 - **`aggregations_and_window_functions.sql`:**
+
   - Demonstrates aggregation and window functions.
     - **Aggregations:**
       - Retrieves the total number of bookings made by each user, including users with no bookings.
       - Retrieves the total number of bookings for each property, including properties with no bookings.
     - **Window Functions:**
       - Uses `ROW_NUMBER()` and `RANK()` to assign row numbers and ranks to properties based on the total number of bookings, allowing easy identification of the most booked properties.
+
+- **`database_index.sql`:**
+
+  - Shows how to create indexes on frequently queried columns to improve query performance.
+  - Includes example usage of `EXPLAIN ANALYZE` to compare query performance before and after indexing.
+
+- **`partitioning.sql`:**
+
+  - Demonstrates how to partition the `booking` table by year using MySQL's `RANGE` partitioning.
+  - Explains the benefits of partitioning for query performance and data management.
+
+- **`perfomance.sql`:**
+
+  - Compares unoptimized and optimized queries for retrieving booking and related data.
+  - Highlights best practices such as using explicit JOINs and selecting only necessary columns.
+
+- **Reports and Documentation:**
+  - `index_performance.md`: Summarizes the impact of adding indexes, with visual evidence.
+  - `partition_performance.md`: Explains the benefits and use cases of table partitioning.
+  - `optimization_report.md`: Reviews query optimization strategies and their impact.
 
 ## Usage
 
@@ -39,6 +60,9 @@ This directory contains SQL scripts demonstrating advanced query techniques on t
 mysql -u <user> -p <database> < joins_queries.sql
 mysql -u <user> -p <database> < subqueries.sql
 mysql -u <user> -p <database> < aggregations_and_window_functions.sql
+mysql -u <user> -p <database> < database_index.sql
+mysql -u <user> -p <database> < partitioning.sql
+mysql -u <user> -p <database> < perfomance.sql
 ```
 
 Or copy and execute individual queries interactively.
