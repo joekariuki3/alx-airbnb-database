@@ -1,46 +1,45 @@
 # Query Optimization Report
 
-This report analyzes two queries from `perfomance.sql` that retrieve booking information along with related user, property, location, and payment details in the Airbnb Clone database. The focus is on optimizing data retrieval for better performance and resource efficiency.
+This report reviews and compares two SQL queries from `perfomance.sql` that retrieve booking information along with related user, property, location, and payment details in the Airbnb Clone database. The focus is on query structure and performance optimization.
 
 ---
 
 ## 1. Unoptimized Query
 
-The unoptimized query uses `SELECT *` to retrieve all columns from all joined tables. This approach has several drawbacks:
+The first query uses **implicit joins** (listing tables in the FROM clause and joining them in the WHERE clause):
 
-- **Excessive Data Transfer:**
-  All columns from every joined table are returned, including unnecessary data.
-- **Increased I/O:**
-  The database engine reads more data pages from disk, especially for columns not indexed or frequently accessed.
-- **Higher Memory Usage:**
-  More columns and larger data types increase memory consumption.
-- **Reduced Performance:**
-  Processing and transferring more data than needed slows down query execution.
+- **Drawbacks:**
+  - **Readability:** Implicit joins are harder to read and maintain, especially as queries grow in complexity.
+  - **Maintainability:** It’s easier to make mistakes or miss join conditions, which can lead to incorrect results or Cartesian products.
+  - **Performance:** While the database engine may optimize both forms similarly, explicit joins are clearer for both humans and query planners.
 
 ---
 
 ## 2. Optimized Query
 
-The optimized query selects only the necessary columns required for the result. This approach offers several benefits:
+The optimized query uses **explicit JOIN syntax** and selects only the necessary columns:
 
-- **Reduced Data Transfer:**
-  Only the necessary columns are selected, minimizing the amount of data sent over the network.
-- **Improved I/O:**
-  Fewer data pages are read from disk, leading to faster query execution.
-- **Lower Memory Usage:**
-  Selecting only required columns reduces memory consumption, especially for large datasets.
-- **Better Performance:**
-  The database engine processes less data, resulting in quicker response times.
+- **Benefits:**
+  - **Clarity:** Explicit JOINs make relationships between tables clear and the query easier to understand.
+  - **Maintainability:** It’s easier to add or modify joins without introducing errors.
+  - **Performance:** Selecting only required columns reduces data transfer, memory usage, and I/O, especially for large datasets.
+  - **Best Practice:** Modern SQL standards recommend using explicit JOINs for complex queries.
+
+---
+
+## Summary of Improvements
+
+- **Switch from implicit to explicit JOINs** for better readability and maintainability.
+- **Select only the columns needed** instead of using `SELECT *`, reducing unnecessary data transfer and resource usage.
+- **Use of EXPLAIN:** The optimized query includes `EXPLAIN` to analyze and verify the query execution plan, helping to identify and resolve performance bottlenecks.
 
 ---
 
 ## Conclusion
 
-- **Avoid using `SELECT *` in production queries.**
-  Always specify only the columns you need.
-- **Optimized queries** improve performance, reduce resource usage, and scale better with large datasets.
-- **Use `EXPLAIN`** to analyze query execution plans and identify potential bottlenecks.
+- Prefer **explicit JOIN syntax** for all multi-table queries.
+- Always **select only the columns you need**.
+- Use tools like `EXPLAIN` to analyze and optimize query performance.
+- These practices lead to more efficient, maintainable, and scalable SQL code.
 
 ---
-
-Optimizing SQL queries is essential for efficient database operations, especially as your data
